@@ -5,6 +5,8 @@ import PostCountry from './PostCountry';
 
 function CustomDropdown() {
     const name = useSelector(state => state.countryReducer.countries)
+    const selectedCountry = useSelector(state => state.selectedCountryReducer)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,7 +23,7 @@ function CustomDropdown() {
 
     return (
         <>
-        <select name="cars" id="cars" onClick={(e) =>{ handleClick(e)}}>
+        <select name="cars" id="cars" onChange={(e) =>{ handleClick(e)}} value={selectedCountry}>
         <option value="none">-------------</option>
         {
             name.map((country, index) => {
